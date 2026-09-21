@@ -673,3 +673,31 @@ class CadenaParyParA{
         return false;
     }
 }
+
+public class ReconocedorDeIdentificadores {
+
+    public static boolean validar(String cadena) {
+        if (cadena == null || cadena.isEmpty()) return false;
+        return q0(cadena, 0);
+    }
+
+    private static boolean q0(String cadena, int indice) {
+        if (indice >= cadena.length()) return false;
+
+        char c = cadena.charAt(indice);
+        if (Character.isLetter(c) || c == '_') {
+            return q1(cadena, indice + 1);
+        }
+        return false;
+    }
+
+    private static boolean q1(String cadena, int indice) {
+        if (indice >= cadena.length()) return true;
+
+        char c = cadena.charAt(indice);
+        if (Character.isLetterOrDigit(c) || c == '_') {
+            return q1(cadena, indice + 1);
+        }
+        return false;
+    }
+}
